@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mock Banking - User Registration</title>
+</head>
+<body>
+    <h2>User Registration</h2>
+    <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:field="*{name}" required><br>
+
+        <label for="passcode">Passcode:</label>
+        <input type="password" id="passcode" name="passcode" th:field="*{passcode}" required><br>
+
+        <label for="balance">Balance:</label>
+        <input type="number" id="balance" name="balance" th:field="*{balance}" required><br>
+
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" name="pincode" th:field="*{pincode}" required><br>
+
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>
