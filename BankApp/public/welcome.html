@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome to Mock Bank</h1>
+    <div id="welcomeMessage"></div>
+
+    <!-- Link to the balance page -->
+    <p><a href="#" id="balanceLink">Check Balance</a></p>
+    
+    <!-- Link to the deposit page -->
+    <p><a href="#" id="depositLink">Deposit</a></p>
+
+    <!-- Link to the withdraw page -->
+    <p><a href="#" id="withdrawLink">Withdraw</a></p>
+  </div>
+
+  <script>
+    // Function to extract the username from the query parameter in the URL
+    function getUsernameFromQuery() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('username');
+    }
+
+    // Function to display the welcome message with the username
+    function displayWelcomeMessage() {
+      const username = getUsernameFromQuery();
+      if (username) {
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        welcomeMessage.textContent = `Welcome, ${username}!`;
+
+        // Add event listeners to the links to dynamically append the username as query parameter
+        const balanceLink = document.getElementById('balanceLink');
+        const depositLink = document.getElementById('depositLink');
+        const withdrawLink = document.getElementById('withdrawLink');
+
+        balanceLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          window.location.href = `/balance.html?username=${username}`;
+        });
+
+        depositLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          window.location.href = `/deposit.html?username=${username}`;
+        });
+
+        withdrawLink.addEventListener('click', (event) => {
+          event.preventDefault();
+          window.location.href = `/withdraw.html?username=${username}`;
+        });
+      }
+    }
+
+    // Call the function to display the welcome message
+    displayWelcomeMessage();
+  </script>
+      <script src="debug1.js"></script>
+
+</body>
+
+</html>

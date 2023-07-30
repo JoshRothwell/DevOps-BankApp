@@ -1,4 +1,4 @@
-// Get references to the form elements
+// Get references to the form elements for registration
 const registrationForm = document.getElementById('registrationForm');
 const nameInput = document.getElementById('name');
 const passcodeInput = document.getElementById('passcode');
@@ -29,7 +29,7 @@ registrationForm.addEventListener('submit', async (e) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, passcode, pincode, balance }),
+      body: JSON.stringify({ name, passcode, balance, pincode }),
     });
 
     // Parse the response

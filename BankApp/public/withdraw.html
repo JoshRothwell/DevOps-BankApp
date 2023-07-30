@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Withdraw</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Withdraw Amount</h1>
+
+    <div id="welcomeMessage"></div> <!-- Add this to show the username -->
+
+    <form id="withdrawForm">
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" name="amount" required>
+      <button type="submit">Withdraw</button>
+    </form>
+
+    <div id="withdrawMessage"></div>
+    <p><a href="#" id="welcomeLink">Back to Welcome Page</a></p>
+  </div>
+
+  <script>
+    const welcomeLink = document.getElementById('welcomeLink');
+
+    // Function to extract the username from the query parameter
+    function getUsernameFromQuery() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('username');
+    }
+
+    // Function to display the welcome message with the username
+    function displayWelcomeMessage() {
+      const username = getUsernameFromQuery();
+      if (username) {
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        welcomeMessage.textContent = `Welcome, ${username}!`;
+      }
+    }
+
+    // Call the function to display the welcome message
+    displayWelcomeMessage();
+
+    // Function to handle the form submission
+    async function handleWithdrawForm(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      const amount = formData.get('amount');
+
+      if (!amount || isNaN(amount) || amount <= 0) {
+        const withdrawMessage = document.getElementById('withdrawMessage');
+        withdrawMessage.textContent = 'Please provide a valid withdraw amount.';
+        return;
+      }
+
+      const username = getUsernameFromQuery();
+      if (!username) {
+        const withdrawMessage = document.getElementById('withdrawMessage');
+        withdrawMessage.textContent = 'User not found.';
+        return;
+      }
+
+      try {
+        const response = await fetch(`/withdraw/${username}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ amount: parseFloat(amount) })
+        });
+
+        const data = await response.json();
+        const withdrawMessage = document.getElementById('withdrawMessage');
+
+        if (response.ok) {
+          if (data.error) {
+            withdrawMessage.textContent = data.error;
+          } else {
+            withdrawMessage.textContent = `Withdraw successful. New balance: $${data.newBalance.toFixed(2)}`;
+            form.reset(); // Clear the form after successful withdraw
+          }
+        } else {
+          withdrawMessage.textContent = 'An error occurred while processing the withdraw.';
+        }
+      } catch (error) {
+        console.error('Error processing withdraw:', error);
+        const withdrawMessage = document.getElementById('withdrawMessage');
+        withdrawMessage.textContent = 'An error occurred while processing the withdraw.';
+      }
+    }
+
+    // Attach event listener to the form submission
+    const withdrawForm = document.getElementById('withdrawForm');
+    withdrawForm.addEventListener('submit', handleWithdrawForm);
+
+    welcomeLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    const username = getUsernameFromQuery();
+    window.location.href = `/welcome.html?username=${encodeURIComponent(username)}`;
+  });
+  </script>
+        <script src="debug1.js"></script>
+
+</body>
+
+</html>
