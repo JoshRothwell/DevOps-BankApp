@@ -9,5 +9,8 @@ jobs:
           name: Install dependencies
           command: npm install
       - run:
+          name: Set executable permission for jest
+          command: chmod +x ./node_modules/.bin/jest
+      - run:
           name: Run tests
-          command: npx --ignore-existing jest
+          command: npx jest
