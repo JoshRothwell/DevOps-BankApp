@@ -1,12 +1,18 @@
-// .test.js
-const myModule = require('./myModule'); // Import the module you want to test
+// login.test.js
+const myModule = require('./myModule');
 
 test('Test case 1: Description of the test case', () => {
-  // Write your test case using Jest's `expect` function
+  // Define the expected value for the first test case
+  const expectedValue = 'Hello, World!';
+
+  // Test the someFunction() function
   expect(myModule.someFunction()).toBe(expectedValue);
 });
 
 test('Test case 2: Description of another test case', () => {
-  // Write another test case
-  expect(myModule.someOtherFunction()).toEqual(expectedValue);
+  // Define the expected value for the second test case
+  const expectedValue = 5;
+
+  // Test the someOtherFunction() function
+  expect(myModule.someOtherFunction(2, 3)).toEqual(expectedValue);
 });
