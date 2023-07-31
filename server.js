@@ -5,9 +5,9 @@ const path = require('path');
 
 const pool = mysql.createPool({
   host: 'sql8.freemysqlhosting.net',
-  user: 'sql8635000',
-  password: '4R82LQKGNc',
-  database: 'sql8635000',
+  user: 'sql8636523',
+  password: 'IxSanycVlC',
+  database: 'sql8636523',
 });
 
 // Middleware to parse incoming request bodies
