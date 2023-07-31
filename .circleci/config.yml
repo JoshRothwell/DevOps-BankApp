@@ -10,5 +10,4 @@ jobs:
           command: npm install
       - run:
           name: Run tests
-          command: npm test
-          ##Test to force commit
+          command: npx --ignore-existing jest
