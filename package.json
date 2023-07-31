@@ -5,6 +5,6 @@
     "mysql": "^2.18.1"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "node login.js"
   }
 }
