@@ -1,4 +1,4 @@
-// login.test.js
+// .test.js
 const myModule = require('./myModule'); // Import the module you want to test
 
 test('Test case 1: Description of the test case', () => {
