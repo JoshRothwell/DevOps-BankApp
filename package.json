@@ -5,6 +5,9 @@
     "mysql": "^2.18.1"
   },
   "scripts": {
-    "test": "node login.js"
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.6.2"
   }
 }
