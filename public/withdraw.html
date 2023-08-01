@@ -45,6 +45,12 @@
     // Call the function to display the welcome message
     displayWelcomeMessage();
 
+    // Function to prompt user for PIN
+    function promptForPin() {
+      const pin = window.prompt('Please enter your 4-digit PIN:');
+      return pin;
+    }
+
     // Function to handle the form submission
     async function handleWithdrawForm(event) {
       event.preventDefault();
@@ -65,13 +71,21 @@
         return;
       }
 
+      // Get PIN from user through prompt
+      const enteredPin = promptForPin();
+      if (!enteredPin || isNaN(enteredPin) || enteredPin.length !== 4) {
+        const withdrawMessage = document.getElementById('withdrawMessage');
+        withdrawMessage.textContent = 'Please enter a valid 4-digit PIN.';
+        return;
+      }
+
       try {
         const response = await fetch(`/withdraw/${username}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ amount: parseFloat(amount) })
+          body: JSON.stringify({ amount: parseFloat(amount), pincode: enteredPin })
         });
 
         const data = await response.json();
