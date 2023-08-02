@@ -52,4 +52,36 @@ describe('API Tests', function () {
   });
 
   // Add more test cases for deposit, withdraw, and other functionalities
+  // Test Deposit
+  it('should deposit money into a user\'s account', function (done) {
+    const depositAmount = 500; // Amount to deposit
+    chai
+      .request(server)
+      .post('/deposit/TestUser') // Replace 'TestUser' with an actual username
+      .send({ amount: depositAmount })
+      .end(function (err, res) {
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('message', 'Deposit successful.');
+        expect(res.body).to.have.property('newBalance');
+        expect(res.body.newBalance).to.be.a('number').and.be.at.least(0);
+        done();
+      });
+  });
+
+  // Test Withdraw
+  it('should withdraw money from a user\'s account', function (done) {
+    const withdrawAmount = 200; // Amount to withdraw
+    chai
+      .request(server)
+      .post('/withdraw/TestUser') // Replace 'TestUser' with an actual username
+      .send({ amount: withdrawAmount })
+      .end(function (err, res) {
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('message', 'Withdraw successful.');
+        expect(res.body).to.have.property('newBalance');
+        expect(res.body.newBalance).to.be.a('number').and.be.at.least(0);
+        done();
+      });
+    });
+    
 });
