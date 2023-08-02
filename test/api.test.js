@@ -18,7 +18,7 @@ describe('API Tests', function () {
         done();
       });
   });
-
+ // Test Login
   it('should log in a user', function (done) {
     chai
       .request(app)
