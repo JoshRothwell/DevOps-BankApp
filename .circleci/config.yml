@@ -8,10 +8,8 @@ jobs:
       - run:
           name: Install dependencies
           command: npm install
-
-      # Run Jest tests
       - run:
-          name: Run Jest tests
+          name: Run tests
           command: npx jest
 
       # Run Mocha tests
