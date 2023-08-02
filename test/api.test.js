@@ -5,7 +5,7 @@ const app = require('../server'); // Update the path accordingly
 
 chai.use(chaiHttp);
 const expect = chai.expect;
-
+// Test Register
 describe('API Tests', function () {
   it('should register a new user', function (done) {
     chai
