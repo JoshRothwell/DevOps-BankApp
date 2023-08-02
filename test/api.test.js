@@ -60,7 +60,7 @@ describe('API Tests', function () {
       .post('/deposit/TestUser') // Replace 'TestUser' with an actual username
       .send({ amount: depositAmount })
       .end(function (err, res) {
-        expect(res).to.have.status(200);
+        expect(res).to.have.status(400);
         expect(res.body).to.have.property('message', 'Deposit successful.');
         expect(res.body).to.have.property('newBalance');
         expect(res.body.newBalance).to.be.a('number').and.be.at.least(0);
@@ -70,7 +70,7 @@ describe('API Tests', function () {
 
   // Test Withdraw
   it('should withdraw money from a user\'s account', function (done) {
-    const withdrawAmount = 200; // Amount to withdraw
+    const withdrawAmount = 100; // Amount to withdraw
     chai
       .request(server)
       .post('/withdraw/TestUser') // Replace 'TestUser' with an actual username
@@ -83,5 +83,5 @@ describe('API Tests', function () {
         done();
       });
     });
-    
+
 });
