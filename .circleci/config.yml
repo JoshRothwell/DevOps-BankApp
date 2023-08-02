@@ -3,16 +3,23 @@ jobs:
   build:
     docker:
       - image: node:latest
+    working_directory: /app
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - run:
           name: Install dependencies
           command: npm install
-      - run:
-          name: Run tests
-          command: npx jest
-
-      # Run Mocha tests
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Run Mocha tests
-          command: npm test
+          command: npx mocha
+      - run:
+          name: Run Jest tests
+          command: npx jest
