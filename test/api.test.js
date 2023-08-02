@@ -83,5 +83,5 @@ describe('API Tests', function () {
         done();
       });
     });
-
+ // Test to see if duplicate users cause errors.
 });
