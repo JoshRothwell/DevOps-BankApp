@@ -1,5 +1,3 @@
-// test/api.test.js
-// Testing various functions of the application
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const app = require('../server'); // Update the path accordingly
@@ -28,9 +26,12 @@ describe('API Tests', function () {
       .post('/register')
       .send({ name: 'TestUser', passcode: '123456', balance: 1000, pincode: '1234' })
       .end(function (err, res) {
+        if (err) {
+          return done(err); // Handle error and call done with the error
+        }
         expect(res).to.have.status(200);
         expect(res.body).to.have.property('message', 'User registration successful.');
-        done();
+        done(); // Call done to indicate test completion
       });
   });
 
@@ -41,9 +42,12 @@ describe('API Tests', function () {
       .post('/login')
       .send({ username: 'TestUser', passcode: '123456' })
       .end(function (err, res) {
+        if (err) {
+          return done(err); // Handle error and call done with the error
+        }
         expect(res).to.have.status(200);
         expect(res.body).to.have.property('message', 'Login successful.');
-        done();
+        done(); // Call done to indicate test completion
       });
   });
 
