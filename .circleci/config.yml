@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
       - image: node:latest
-    working_directory: /app
     steps:
       - checkout
       - restore_cache:
@@ -23,8 +22,9 @@ jobs:
       - run:
           name: Run Mocha tests
           command: npx mocha
-          working_directory: /app/test # Adjust the path as needed
+      - run:
+          name: Set permissions for Jest
+          command: chmod 0777 ./node_modules/.bin/jest
       - run:
           name: Run Jest tests
           command: npx jest
-          working_directory: /app/test # Adjust the path as needed
