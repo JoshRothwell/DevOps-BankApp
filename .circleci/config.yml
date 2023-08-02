@@ -19,7 +19,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Run Mocha tests
-          command: sudo npx mocha
+          command: npx mocha
+          working_directory: /app/test # Adjust the path as needed
       - run:
           name: Run Jest tests
-          command: sudo npx jest
+          command: npx jest
+          working_directory: /app/test # Adjust the path as needed
