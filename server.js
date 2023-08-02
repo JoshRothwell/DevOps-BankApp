@@ -4,7 +4,8 @@ const mysql = require('mysql');
 const path = require('path');
 
 const pool = mysql.createPool({
-  host: 'sql8.freemysqlhosting.net',
+  host: '54.74.30.138',
+ // host: 'sql8.freemysqlhosting.net',
   user: 'sql8636523',
   password: 'IxSanycVlC',
   database: 'sql8636523',
