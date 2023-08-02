@@ -21,7 +21,8 @@ jobs:
           command: chmod 0777 ./node_modules/.bin/mocha
       - run:
           name: Run Mocha tests
-          command: npx mocha
+          command: npx mocha --exit
+
       - run:
           name: Set permissions for Jest
           command: chmod 0777 ./node_modules/.bin/jest
