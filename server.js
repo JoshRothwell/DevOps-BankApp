@@ -196,3 +196,6 @@ const port = 3000; // You can change this port number if needed
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
+// Export the Express app
+module.exports = app;
