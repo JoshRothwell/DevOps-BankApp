@@ -19,7 +19,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Run Mocha tests
-          command: npx mocha
+          command: sudo npx mocha
       - run:
           name: Run Jest tests
-          command: npx jest
+          command: sudo npx jest
