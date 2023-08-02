@@ -17,6 +17,9 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - before_script:
+          name: Set permissions for Mocha
+          command: chmod 0777 ./node_modules/.bin/mocha
       - run:
           name: Run Mocha tests
           command: npx mocha
