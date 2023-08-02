@@ -8,9 +8,13 @@ jobs:
       - run:
           name: Install dependencies
           command: npm install
+
+      # Run Jest tests
       - run:
-          name: Set executable permission for jest
-          command: chmod +x ./node_modules/.bin/jest
-      - run:
-          name: Run tests
+          name: Run Jest tests
           command: npx jest
+
+      # Run Mocha tests
+      - run:
+          name: Run Mocha tests
+          command: npm test
