@@ -90,7 +90,7 @@
         const depositMessage = document.getElementById('depositMessage');
 
         if (response.ok) {
-          depositMessage.textContent = `Deposit successful. New balance: $${data.newBalance.toFixed(2)}`;
+          depositMessage.textContent = `Deposit successful. New balance: €${data.newBalance.toFixed(2)}`;
           form.reset(); // Clear the form after successful deposit
         } else {
           depositMessage.textContent = 'An error occurred while processing the deposit.';

@@ -95,7 +95,7 @@
           if (data.error) {
             withdrawMessage.textContent = data.error;
           } else {
-            withdrawMessage.textContent = `Withdraw successful. New balance: $${data.newBalance.toFixed(2)}`;
+            withdrawMessage.textContent = `Withdraw successful. New balance: €${data.newBalance.toFixed(2)}`;
             form.reset(); // Clear the form after successful withdraw
           }
         } else {

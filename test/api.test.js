@@ -22,6 +22,9 @@ after(function () {
 describe('API Tests', function () {
   it('should register a new user', function (done) {
     chai
+    //Note: Whenever running this test, you should either A. Delete the 'TestUser' entry created before running
+    // the test again, or B. change the details of the test case, the database misbehaves when modifying
+    // the details of a user when said user shares the same name with multiple other users.
       .request(server) // Use the server instance here
       .post('/register')
       .send({ name: 'TestUser', passcode: '123456', balance: 1000, pincode: '1234' })

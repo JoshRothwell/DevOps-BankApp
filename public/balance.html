@@ -37,7 +37,7 @@
 
         if (response.ok) {
           const balanceDisplay = document.getElementById('balanceDisplay');
-          balanceDisplay.textContent = `Your balance is: $${data.balance.toFixed(2)}`;
+          balanceDisplay.textContent = `Your balance is: €${data.balance.toFixed(2)}`;
         } else {
           console.error('Error fetching balance:', data.error);
           const balanceDisplay = document.getElementById('balanceDisplay');

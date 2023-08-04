@@ -1,8 +1,10 @@
+// Dependencies
 const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const path = require('path');
 
+// SQL Database crededentials
 const pool = mysql.createPool({
   host: 'sql8.freemysqlhosting.net',
   user: 'sql8636523',
