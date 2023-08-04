@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 20px;
-    background-color: #f0f0f0; /* Light desaturated blue background */
+    background-color: #99f5e1; /* Light desaturated blue background */
   }
   
   .container {
@@ -11,7 +11,7 @@ body {
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #58c798;
   }
   
   h1 {
